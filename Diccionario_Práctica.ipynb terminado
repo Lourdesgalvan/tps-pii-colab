@@ -1,0 +1,559 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Lourdesgalvan/tps-pii-colab/blob/main/Diccionario_Pr%C3%A1ctica.ipynb%20terminado\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "8VOD-zpMJovw"
+      },
+      "outputs": [],
+      "source": [
+        "# Listas de alumnos\n",
+        "estudiantes_5d = [\n",
+        "   (\"Alurralde, Solange Stefania\",\"D\",\"02/04/2007\"),\n",
+        "   (\"Alvarado, Ludmila Del Milagro\",\"D\",\"06/09/2006\"),\n",
+        "   (\"Angel, Camila Juliana\",\"D\",\"07/03/2007\"),\n",
+        "   (\"Arenas, Lucas Gabriel\",\"D\",\"26/06/2007\"),\n",
+        "   (\"Caseres, Maria Antonia\",\"D\",\"01/07/2006\"),\n",
+        "   (\"Castillo, Paulina Milagros\",\"D\",\"01/06/2007\"),\n",
+        "   (\"Correa Segovia, Hugo Mariano\",\"D\",\"04/12/2006\"),\n",
+        "   (\"D Elia, Alvaro Tadeo\",\"D\",\"27/08/2006\"),\n",
+        "   (\"Flores, Victoria Agustina\",\"D\",\"12/12/2006\"),\n",
+        "   (\"Geronimo Soriano, Lizzie Amaya\",\"D\",\"20/01/2007\"),\n",
+        "   (\"GUZMAN, ANGÉLICA MORENA\",\"D\",\"11/04/2007\"),\n",
+        "   (\"Guzman, Jazmin Esmeralda Belen\",\"D\",\"31/07/2006\"),\n",
+        "   (\"Jaime, Anita Maria Belen\",\"D\",\"19/04/2007\"),\n",
+        "   (\"Lacour Polo, Nazarena\",\"D\",\"19/12/2005\"),\n",
+        "   (\"Lascano Guanca, Marcelo Fabricio\",\"D\",\"17/02/2006\"),\n",
+        "   (\"Lezcano, Celia Morena\",\"D\",\"01/07/2005\"),\n",
+        "   (\"Martinez, Tomas Andres\",\"D\",\"22/03/2007\"),\n",
+        "   (\"PORTELLA VALDIVIA, PEDRO FRANCISCO\",\"D\",\"24/01/2007\"),\n",
+        "   (\"Retamal Cisneros, Zacarias Josue\",\"D\",\"24/02/2007\"),\n",
+        "   (\"Rosales, Francisco Gabriel\",\"D\",\"14/11/2006\"),\n",
+        "   (\"Salem Barba, Mahia\",\"D\",\"14/10/2005\"),\n",
+        "   (\"Soto Camara, Agustin Ignacio\",\"D\",\"07/11/2005\"),\n",
+        "   (\"Villalba, Irina\",\"D\",\"09/09/2006\"),\n",
+        "   (\"Voltolini, Emanuel Tobias\",\"D\",\"17/09/2006\"),\n",
+        "   (\"Zalazar, Santino Stefano\",\"D\",\"30/09/2006\")\n",
+        "]\n",
+        "\n",
+        "estudiantes_5c=[\n",
+        "    (\"ABUD LASPIUR, LOURDES MARIEL\",\"C\",\"05/12/2006\"),\n",
+        "    (\"Amador, Luana Micaela\",\"C\",\"09/12/2006\"),\n",
+        "    (\"Anaquin, Leonardo Ezequiel\",\"C\",\"06/09/2005\"),\n",
+        "    (\"Araoz Sanchez, Lautaro Nahuel\",\"C\",\"28/12/2005\"),\n",
+        "    (\"Argañaraz, Agostina Abril\",\"C\",\"11/10/2006\"),\n",
+        "    (\"Barrera, Matias Ezequiel\",\"C\",\"27/02/2007\"),\n",
+        "    (\"Barrozo Vedia, Joaquin Nicolas\",\"C\",\"15/04/2006\"),\n",
+        "    (\"Bettinelli, Valentino\",\"C\",\"12/07/2006\"),\n",
+        "    (\"Bracamonte Martinez, Salvador\",\"C\",\"02/11/2005\"),\n",
+        "    (\"Colque Rivero, Ariana Zoe Del Valle\",\"C\",\"27/12/2006\"),\n",
+        "    (\"Diaz, Dulce Maitena\",\"C\",\"11/12/2006\"),\n",
+        "    (\"FIGUEROA, SANTINO JOSUE\",\"C\",\"12/05/2007\"),\n",
+        "    (\"Flores Cardozo, Agustina Tiara\",\"C\",\"18/03/2006\"),\n",
+        "    (\"Gallo, Octavio Ismael\",\"C\",\"04/08/2006\"),\n",
+        "    (\"Galvan, Lourdes Yamila\",\"C\",\"19/08/2005\"),\n",
+        "    (\"Giangreco, Vitto Tomasso\",\"C\",\"21/03/2007\"),\n",
+        "    (\"Grancara, Martina Luna\",\"C\",\"15/12/2006\"),\n",
+        "    (\"Guanca, Sara Elizabeth\",\"C\",\"17/01/2007\"),\n",
+        "    (\"Lopez, Victoria Constanza\",\"C\",\"12/11/2007\"),\n",
+        "    (\"Mamani Garrido, Rosario Agostina\",\"C\",\"24/10/2006\"),\n",
+        "    (\"Marinaro, Martin Ezequiel\",\"C\",\"03/11/2006\"),\n",
+        "    (\"Merluzzi Dagum, Ignacio\",\"C\",\"22/12/2005\"),\n",
+        "    (\"Messina, Martina\",\"C\",\"13/07/2005\"),\n",
+        "    (\"RASUK, KARIM\", \"C\",\"13/07/2007\"),\n",
+        "    (\"Rios, Lucia Magali\",\"C\",\"22/09/2006\"),\n",
+        "    (\"Sanchez Flores, Matías Agustín\",\"C\",\"15/02/2007\"),\n",
+        "    (\"Scarano, Renato Marcelo\",\"C\",\"06/12/2006\"),\n",
+        "    (\"Sierra, Lucas Mauricio\",\"C\",\"03/04/2005\"),\n",
+        "    (\"Tapia, Martin Gabriel\",\"C\",\"30/05/2006\"),\n",
+        "    (\"Vilte, Mia Antonella Alondra\",\"C\",\"10/09/2005\"),\n",
+        "    (\"Virgillito, Katya Milena\",\"C\",\"19/06/2007\")\n",
+        "]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Dada la lista estudiantes:\n",
+        "> - Hacer una celda para resolver cada punto.\n",
+        "- El TP resuelto será revisado en tu repositorio, no es necesario que lo envíes, pero sí que lo pushees correctamente.\n",
+        "- En la nota inicial se contempla:\n",
+        "  - La incorporación de este documento a tu propio respositorio.\n",
+        "  - El pusheo de los cambios realizados.\n",
+        "  - La resolución de los ejercicios propuestos.\n"
+      ],
+      "metadata": {
+        "id": "rd6Ug6v3J4uN"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "1. Reemplaza todos los valores del nombre por los que obtengas del método title(). De esta manera las listas quedaran con los datos más homogéneos."
+      ],
+      "metadata": {
+        "id": "wRLng-uURyJ3"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "for i in range(len(estudiantes_5d)):\n",
+        "  nombre, division, fecha_nac = estudiantes_5d[i]\n",
+        "  estudiantes_5d[i] = nombre.title(),division, fecha_nac\n",
+        "for estudiante in estudiantes_5d:\n",
+        "  print(estudiante)"
+      ],
+      "metadata": {
+        "id": "5lFqJoTaSIWi",
+        "outputId": "313ef5f9-c04d-461b-8cf1-8da3070e51e3",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "('Alurralde, Solange Stefania', 'D', '02/04/2007')\n",
+            "('Alvarado, Ludmila Del Milagro', 'D', '06/09/2006')\n",
+            "('Angel, Camila Juliana', 'D', '07/03/2007')\n",
+            "('Arenas, Lucas Gabriel', 'D', '26/06/2007')\n",
+            "('Caseres, Maria Antonia', 'D', '01/07/2006')\n",
+            "('Castillo, Paulina Milagros', 'D', '01/06/2007')\n",
+            "('Correa Segovia, Hugo Mariano', 'D', '04/12/2006')\n",
+            "('D Elia, Alvaro Tadeo', 'D', '27/08/2006')\n",
+            "('Flores, Victoria Agustina', 'D', '12/12/2006')\n",
+            "('Geronimo Soriano, Lizzie Amaya', 'D', '20/01/2007')\n",
+            "('Guzman, Angélica Morena', 'D', '11/04/2007')\n",
+            "('Guzman, Jazmin Esmeralda Belen', 'D', '31/07/2006')\n",
+            "('Jaime, Anita Maria Belen', 'D', '19/04/2007')\n",
+            "('Lacour Polo, Nazarena', 'D', '19/12/2005')\n",
+            "('Lascano Guanca, Marcelo Fabricio', 'D', '17/02/2006')\n",
+            "('Lezcano, Celia Morena', 'D', '01/07/2005')\n",
+            "('Martinez, Tomas Andres', 'D', '22/03/2007')\n",
+            "('Portella Valdivia, Pedro Francisco', 'D', '24/01/2007')\n",
+            "('Retamal Cisneros, Zacarias Josue', 'D', '24/02/2007')\n",
+            "('Rosales, Francisco Gabriel', 'D', '14/11/2006')\n",
+            "('Salem Barba, Mahia', 'D', '14/10/2005')\n",
+            "('Soto Camara, Agustin Ignacio', 'D', '07/11/2005')\n",
+            "('Villalba, Irina', 'D', '09/09/2006')\n",
+            "('Voltolini, Emanuel Tobias', 'D', '17/09/2006')\n",
+            "('Zalazar, Santino Stefano', 'D', '30/09/2006')\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "2. Genera una lista de diccionarios con los datos de las listas, donde las claves de los mismos serán:\n",
+        "- \"apellido\"\n",
+        "- \"nombre\"\n",
+        "- \"curso\"\n",
+        "- \"division\"\n",
+        "- \"feha_de_nacimiento\"\n",
+        "\n",
+        "Muestra la información generada."
+      ],
+      "metadata": {
+        "id": "dYEGkYZyLy9I"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "lista_dict = []\n",
+        "for estudiante in estudiantes_5d:\n",
+        "  nombre_c, division, fecha_nac = estudiante\n",
+        "  apellido, nombre = nombre_c.split(\",\")\n",
+        "  nombre = nombre.strip()\n",
+        "  diccionario = {}\n",
+        "  diccionario[\"nombre\"] = nombre\n",
+        "  diccionario[\"apellido\"] = apellido\n",
+        "  diccionario[\"curso\"] = 5\n",
+        "  diccionario[\"division\"] = division\n",
+        "  diccionario[\"fecha de nacimiento\"] = fecha_nac\n",
+        "  lista_dict.append(diccionario)\n",
+        "\n",
+        "for estudiante in lista_dict:\n",
+        "  print(estudiante)"
+      ],
+      "metadata": {
+        "id": "aOE5HA47NkXc",
+        "outputId": "6c599f29-dfab-4d2d-be0b-f56a1bcda81e",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'nombre': 'Solange Stefania', 'apellido': 'Alurralde', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '02/04/2007'}\n",
+            "{'nombre': 'Ludmila Del Milagro', 'apellido': 'Alvarado', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '06/09/2006'}\n",
+            "{'nombre': 'Camila Juliana', 'apellido': 'Angel', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '07/03/2007'}\n",
+            "{'nombre': 'Lucas Gabriel', 'apellido': 'Arenas', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '26/06/2007'}\n",
+            "{'nombre': 'Maria Antonia', 'apellido': 'Caseres', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '01/07/2006'}\n",
+            "{'nombre': 'Paulina Milagros', 'apellido': 'Castillo', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '01/06/2007'}\n",
+            "{'nombre': 'Hugo Mariano', 'apellido': 'Correa Segovia', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '04/12/2006'}\n",
+            "{'nombre': 'Alvaro Tadeo', 'apellido': 'D Elia', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '27/08/2006'}\n",
+            "{'nombre': 'Victoria Agustina', 'apellido': 'Flores', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '12/12/2006'}\n",
+            "{'nombre': 'Lizzie Amaya', 'apellido': 'Geronimo Soriano', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '20/01/2007'}\n",
+            "{'nombre': 'Angélica Morena', 'apellido': 'Guzman', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '11/04/2007'}\n",
+            "{'nombre': 'Jazmin Esmeralda Belen', 'apellido': 'Guzman', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '31/07/2006'}\n",
+            "{'nombre': 'Anita Maria Belen', 'apellido': 'Jaime', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '19/04/2007'}\n",
+            "{'nombre': 'Nazarena', 'apellido': 'Lacour Polo', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '19/12/2005'}\n",
+            "{'nombre': 'Marcelo Fabricio', 'apellido': 'Lascano Guanca', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '17/02/2006'}\n",
+            "{'nombre': 'Celia Morena', 'apellido': 'Lezcano', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '01/07/2005'}\n",
+            "{'nombre': 'Tomas Andres', 'apellido': 'Martinez', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '22/03/2007'}\n",
+            "{'nombre': 'Pedro Francisco', 'apellido': 'Portella Valdivia', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '24/01/2007'}\n",
+            "{'nombre': 'Zacarias Josue', 'apellido': 'Retamal Cisneros', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '24/02/2007'}\n",
+            "{'nombre': 'Francisco Gabriel', 'apellido': 'Rosales', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '14/11/2006'}\n",
+            "{'nombre': 'Mahia', 'apellido': 'Salem Barba', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '14/10/2005'}\n",
+            "{'nombre': 'Agustin Ignacio', 'apellido': 'Soto Camara', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '07/11/2005'}\n",
+            "{'nombre': 'Irina', 'apellido': 'Villalba', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '09/09/2006'}\n",
+            "{'nombre': 'Emanuel Tobias', 'apellido': 'Voltolini', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '17/09/2006'}\n",
+            "{'nombre': 'Santino Stefano', 'apellido': 'Zalazar', 'curso': 5, 'division': 'D', 'fecha de nacimiento': '30/09/2006'}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "3. Genera un diccionario en python, en donde la clave sea cada nombre que aparece en las listas y el valor será la cantidad de veces que se encuentra el mismo.\n",
+        "Para este punto es posible fusionar ambas listas en una sola, recordá que hay un método que realiza esta acción.\n",
+        "\n",
+        "Mostrá la informacion generada"
+      ],
+      "metadata": {
+        "id": "UW2dlBsGMAte"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "lista_nombres = []\n",
+        "for estudiante in estudiantes_informatica:\n",
+        "  nombre_c = estudiante[0].split(\", \")\n",
+        "  nombre = nombre_c[1].split()\n",
+        "  lista_nombres.extend(nombre)\n",
+        "for i in range(len(nombre)):\n",
+        "  nombre[i] = nombre[i].strip()\n",
+        "lista_nombres.extend(nombre)\n",
+        "encuentro_nombre = {}\n",
+        "for nombre in lista_nombres:\n",
+        "  if nombre in encuentro_nombre.keys():\n",
+        "    encuentro_nombre[nombre] += 1\n",
+        "  else:\n",
+        "    encuentro_nombre[nombre] = 1\n",
+        "for nombre, encuentro in encuentro_nombre.items():\n",
+        "  print(f\"El nombre {nombre} aparece {encuentro} veces.\")"
+      ],
+      "metadata": {
+        "id": "5T2KckRaOR2k",
+        "outputId": "ba067dfc-d094-499b-a77c-514c9a6944c1",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 211
+        }
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'estudiantes_informatica' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-4-409e7fbf5367>\u001b[0m in \u001b[0;36m<cell line: 2>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0mlista_nombres\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0;32mfor\u001b[0m \u001b[0mestudiante\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mestudiantes_informatica\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m   \u001b[0mnombre_c\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mestudiante\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msplit\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\", \"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m   \u001b[0mnombre\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnombre_c\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msplit\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m   \u001b[0mlista_nombres\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mextend\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mnombre\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'estudiantes_informatica' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "4. Genera un diccionario en python, en donde la clave sea cada apellido que aparece en las listas y el valor será la cantidad de veces que se encuentra el mismo.\n",
+        "Para este punto es posible fusionar ambas listas en una sola, recordá que hay un método que realiza esta acción."
+      ],
+      "metadata": {
+        "id": "kZeEHUYVNwGV"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "dict_apellidos = {}\n",
+        "estudiantes_5d.extend(estudiantes_5c)\n",
+        "for estudiante in estudiantes_5d:\n",
+        "  apellidos = estudiante[\"apellido\"].split(\" \")\n",
+        "  for apellido in apellidos:\n",
+        "    if apellido in dict_apellidos.keys():\n",
+        "      dict_apellidos[apellido] += 1\n",
+        "    else:\n",
+        "      dict_apellidos[apellido] = 1\n",
+        "\n",
+        "for apellido in dict_apellidos:\n",
+        "  print(f\"{apellido}: {dict_apellidos[apellido]}\")"
+      ],
+      "metadata": {
+        "id": "q05GnxXgORzt"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "5. Solicita al usuario que ingrese un apellido y muestra  a todos los estudiantes con ese apellido."
+      ],
+      "metadata": {
+        "id": "ywYmA2JQNp3T"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "apellido = input(\"Ingrese un apellido: \").title()\n",
+        "for estudiante in lista_dict:\n",
+        "  if apellido in estudiante[\"apellido\"]:\n",
+        "    print(estudiante)"
+      ],
+      "metadata": {
+        "id": "Cnp334ZrOCjK"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "6. Solicita al usuario que ingrese un nombre y muestra a todos los estudiantes con el nombre ingresado."
+      ],
+      "metadata": {
+        "id": "iAXts6saODoU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nombre =input(\"Ingrese un nombre: \").title()\n",
+        "for estudiante in lista_dict:\n",
+        "  if nombre in estudiante[\"nombre\"]:\n",
+        "    print(estudiante)"
+      ],
+      "metadata": {
+        "id": "FMRsUlvtOJS_"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "7. Busca el diccionario con tu información dentro de la lista y cámbiate de división, de tal manera que si estas en 5C, con el cambio quedes en 5D y viceversa."
+      ],
+      "metadata": {
+        "id": "T4PFiwwdOK27"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "for estudiante in lista_dict:\n",
+        "   if \"Octavio\" in estudiante[\"nombre\"]:\"\n",
+        "      print(estudiante)\n",
+        "for estudiante in lista_dict:\n",
+        "    print(estudiante)"
+      ],
+      "metadata": {
+        "id": "vjQ2X9x3OmFr"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "8. Ordenar la lista alfabeticamente por nombre. Ascendente y descendentemente. Para elegir como ordenarla, mostrar un menú donde el usuario podrá decidir como quiere ver la salida."
+      ],
+      "metadata": {
+        "id": "xfy8SFlZRVGf"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "orden=input(\"Elija como ordenar la lista: \\nA. Ascendente \\nD. Descendente \").upper()\n",
+        "if orden == \"A\":\n",
+        "  lista_dict.sort(key=lambda x: x[\"nombre\"])\n",
+        "  for estudiante in lista_dict:\n",
+        "    print(estudiante)\n",
+        "elif orden == \"D\":\n",
+        "  lista_dict.sort(key=lambda x: x[\"nombre\"],reverse=True)\n",
+        "  for estudiante in lista_dict:\n",
+        "    print(estudiante)\n",
+        "else:\n",
+        "  print(\"Opcion invalida\")\n",
+        "  orden=input(\"Elija como ordenar la lista: \\nA. Ascendente \\nD. Descendente \")"
+      ],
+      "metadata": {
+        "id": "E4Onk1FNRUa2"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "9. Ordenar la lista alfabeticamente por apellido. Ascendente y descendentemente. Para elegir como ordenarla, mostrar un menú donde el usuario podrá decidir como quiere ver la salida."
+      ],
+      "metadata": {
+        "id": "lW18NgPjRcGP"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "orden_2=input(\"Elija como ordenar la lista: \\nA. Ascendente por apellido \\nD. Descendente por apellido \").upper()\n",
+        "if orden_2 == \"A\":\n",
+        "  lista_dict.sort(key=lambda x: x[\"apellido\"])\n",
+        "  for estudiante in lista_dict:\n",
+        "    print(estudiante)\n",
+        "elif orden_2 == \"D\":\n",
+        "  lista_dict.sort(key=lambda x: x[\"apellido\"],reverse=True)\n",
+        "  for estudiante in lista_dict:\n",
+        "    print(estudiante)\n",
+        "else:\n",
+        "  print(\"Opcion invalida\")"
+      ],
+      "metadata": {
+        "id": "jTtWBnalRcoC"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "10. Ordena la lista por fecha de nacimiento, de manera ascendente y descendente."
+      ],
+      "metadata": {
+        "id": "E24lH7x5Xbur"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "orden_3=input(\"Elija como ordenar la lista: \\nA. Ascendente por fecha de nacimiento \\nD. Descendente por fecha de nacimiento \").upper()\n",
+        "if orden_3 == \"A\":\n",
+        "  lista_dict.sort(key=lambda x: x[\"fecha_nacimiento\"])\n",
+        "  for estudiante in lista_dict:\n",
+        "    print(estudiante)\n",
+        "elif orden_3 == \"D\":\n",
+        "  lista_dict.sort(key=lambda x: x[\"fecha_nacimiento\"],reverse=True)\n",
+        "  for estudiante in lista_dict:\n",
+        "    print(estudiante)\n",
+        "else:\n",
+        "  print(\"Opcion invalida\")\n",
+        "  orden_3=input(\"Elija como ordenar la lista: \\nA. Ascendente por fecha de nacimiento \\nD. Descendente por fecha de nacimiento \").upper()"
+      ],
+      "metadata": {
+        "id": "9SeI3GBGXims"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "11. Generar una estuctura de diccionario anidado en donde la clave sea el nombre del estudiante y el valor sea un diccionario con los datos del mismo, de la siguiente manera:\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "```python\n",
+        "estudiantes = {\n",
+        "    \"Juan Perez\": {\n",
+        "        \"año\": 2024,\n",
+        "        \"división\": \"5D\",\n",
+        "        \"fecha de nacimiento\": \"15/03/2006\"\n",
+        "    },\n",
+        "    \"Maria Gomez\": {\n",
+        "        \"año\": 2024,\n",
+        "        \"división\": \"5D\",\n",
+        "        \"fecha de nacimiento\": \"22/07/2006\"\n",
+        "    },\n",
+        "    \"Carlos Lopez\": {\n",
+        "        \"año\": 2024,\n",
+        "        \"división\": \"5D\",\n",
+        "        \"fecha de nacimiento\": \"05/10/2006\"\n",
+        "    }\n",
+        "}\n",
+        "```\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "vOY6K_ydRc3Q"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "estudiantes_2 = {}\n",
+        "for estudiante in lista_dict:\n",
+        "  nombre_completo = estudiante.get('nombre', '') + ' ' + estudiante.get('apellido', '')\n",
+        "  division,curso,fecha_nacimiento=estudiante.get('division'),estudiante.get('curso'),estudiante.get('fecha_nacimiento')\n",
+        "  dic={}\n",
+        "  dic[\"division\"]=curso,division\n",
+        "  dic[\"fecha_nacimiento\"]=fecha_nacimiento\n",
+        "  dic[\"año\"]=2024\n",
+        "  estudiantes_2[nombre_completo] = dic\n",
+        "for estudiante,valor in estudiantes_2.items():\n",
+        "  print(estudiante,valor)"
+      ],
+      "metadata": {
+        "id": "9JDrd3WqRdTi"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
